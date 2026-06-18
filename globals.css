@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-inter: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #FAFAF8;
+  color: #1A1A1A;
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Before/After slider */
+.ba-slider {
+  position: relative;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+}
+
+.ba-after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ba-handle {
+  position: absolute;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: white;
+  cursor: ew-resize;
+  z-index: 10;
+}
+
+.ba-handle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+}
+
+.ba-handle::after {
+  content: '◀ ▶';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  color: #1A1A1A;
+  letter-spacing: -1px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Scroll animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Form inputs */
+.form-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1.5px solid #E8E0D0;
+  background: white;
+  font-family: var(--font-inter);
+  font-size: 15px;
+  color: #1A1A1A;
+  outline: none;
+  transition: border-color 0.2s;
+  border-radius: 2px;
+}
+
+.form-input:focus {
+  border-color: #C9A96E;
+}
+
+.form-input::placeholder {
+  color: #9A9A9A;
+}
+
+/* Gold button */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #C9A96E;
+  color: white;
+  padding: 16px 32px;
+  font-family: var(--font-inter);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.btn-gold:hover {
+  background: #A8864E;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: white;
+  padding: 15px 30px;
+  font-family: var(--font-inter);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.btn-outline:hover {
+  border-color: white;
+  background: rgba(255,255,255,0.08);
+}
+
+.section-label {
+  display: inline-block;
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #C9A96E;
+  margin-bottom: 16px;
+}
+
+/* Divider line */
+.gold-line {
+  width: 48px;
+  height: 2px;
+  background: #C9A96E;
+  margin: 20px 0;
+}
